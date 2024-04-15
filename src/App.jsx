@@ -5,15 +5,14 @@ import "./App.scss";
 import useRefDimensions from "./hooks/useRefDimensions";
 
 function App() {
-  const [selectedValue, setSelectedValue] = useState(); // Changed variable name to selectedValue for clarity
+  const [selectedValue, setSelectedValue] = useState();
   const [coordinates, setCoordinates] = useState([]);
-  const [searchResults, setSearchResults] = useState([]); // Changed variable name to searchResults for clarity
+  const [searchResults, setSearchResults] = useState([]);
   const divRef = createRef();
 
   const dimensions = useRefDimensions(divRef);
 
   const fetchCityList = (searchValue) => {
-    // Changed parameter name to searchValue for clarity
     return fetch(
       `https://nominatim.openstreetmap.org/search.php?q=${searchValue}&polygon_geojson=1&format=json`,
     )
@@ -31,7 +30,6 @@ function App() {
                 value: result.place_id,
               };
             });
-          console.log(options);
           return options;
         } else {
           setSearchResults([]);
@@ -44,11 +42,9 @@ function App() {
 
   useEffect(() => {
     if (selectedValue) {
-      console.log(searchResults.find((el) => el.place_id === selectedValue));
       const newCoordinates = searchResults.find(
         (el) => el.place_id === selectedValue,
       )?.geojson?.coordinates;
-      console.log(newCoordinates);
       setCoordinates(newCoordinates);
     }
   }, [searchResults, selectedValue]);
