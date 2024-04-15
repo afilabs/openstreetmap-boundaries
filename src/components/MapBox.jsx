@@ -40,7 +40,7 @@ function MapBox({ coordinates, dimensions }) {
     <MapGL
       {...viewState}
       mapStyle="mapbox://styles/mapbox/light-v9"
-      mapboxAccessToken="pk.eyJ1IjoidGhlcHJvZiIsImEiOiJjazRxaTFpMDUwMXd6M21uMHRvYXBlanY1In0.7v5Itqbe2GQvWxtkefhcug"
+      mapboxAccessToken={process.env.REACT_APP_MAPBOX_KEY}
       style={{
         height: "100%",
         width: "100%",
