@@ -5,63 +5,65 @@ import "./App.scss";
 import useRefDimensions from "./hooks/useRefDimensions";
 
 function App() {
-  const [value, setValue] = useState();
+  const [selectedValue, setSelectedValue] = useState(); // Changed variable name to selectedValue for clarity
   const [coordinates, setCoordinates] = useState([]);
-  const [rsSearch, setRsSearch] = useState([]);
+  const [searchResults, setSearchResults] = useState([]); // Changed variable name to searchResults for clarity
   const divRef = createRef();
 
   const dimensions = useRefDimensions(divRef);
 
-  const fetchCityList = (valueSearch) => {
+  const fetchCityList = (searchValue) => {
+    // Changed parameter name to searchValue for clarity
     return fetch(
-      `https://nominatim.openstreetmap.org/search.php?q=${valueSearch}&polygon_geojson=1&format=json`,
+      `https://nominatim.openstreetmap.org/search.php?q=${searchValue}&polygon_geojson=1&format=json`,
     )
       .then((response) => response.json())
       .then((body) => {
         if (Array.isArray(body)) {
-          setRsSearch(body);
+          setSearchResults(body);
           const options = body
-            .filter((s) => {
-              return s.geojson?.type === "Polygon";
+            .filter((result) => {
+              return result.geojson?.type === "Polygon";
             })
-            .map((s) => {
+            .map((result) => {
               return {
-                label: s.display_name,
-                value: s.place_id,
+                label: result.display_name,
+                value: result.place_id,
               };
             });
           console.log(options);
           return options;
         } else {
-          setRsSearch([]);
+          setSearchResults([]);
           setCoordinates([]);
-          setValue(undefined);
+          setSelectedValue(undefined);
           return [];
         }
       });
   };
 
   useEffect(() => {
-    if (value) {
-      console.log(rsSearch.find((el) => el.place_id === value));
-      const newCoordinates = rsSearch.find((el) => el.place_id === value)
-        ?.geojson?.coordinates;
+    if (selectedValue) {
+      console.log(searchResults.find((el) => el.place_id === selectedValue));
+      const newCoordinates = searchResults.find(
+        (el) => el.place_id === selectedValue,
+      )?.geojson?.coordinates;
       console.log(newCoordinates);
       setCoordinates(newCoordinates);
     }
-  }, [rsSearch, value]);
+  }, [searchResults, selectedValue]);
 
   return (
     <div className="App" ref={divRef}>
       <div className="search">
         <DebounceSelect
-          value={value}
+          value={selectedValue}
           showSearch={true}
           filterOption={false}
           placeholder="Select city"
           fetchOptions={fetchCityList}
           onChange={(newValue) => {
-            setValue(newValue);
+            setSelectedValue(newValue);
           }}
           style={{
             width: "100%",
