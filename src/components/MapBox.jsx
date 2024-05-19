@@ -41,11 +41,9 @@ function MapBox({ coordinates, dimensions }) {
       {...viewState}
       mapStyle="mapbox://styles/mapbox/light-v9"
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_KEY}
-      style={{
-        height: "100%",
-        width: "100%",
-      }}
-      onMove={(viewport) => setViewState(viewport)}
+      height="100%"
+      width="100%"
+      onMove={(evt) => setViewState(evt.viewState)}
     >
       {/* Display the polygon layer if coordinates are available */}
       {coordinates?.length > 0 && (
@@ -71,13 +69,13 @@ function MapBox({ coordinates, dimensions }) {
               },
             }}
           />
-           <Layer
+          <Layer
             {...{
               id: "def456",
               type: "line",
               paint: {
-                'line-color': '#000',
-                'line-width': 3
+                "line-color": "#000",
+                "line-width": 3,
               },
             }}
           />
