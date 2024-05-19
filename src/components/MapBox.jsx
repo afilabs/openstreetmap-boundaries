@@ -67,7 +67,17 @@ function MapBox({ coordinates, dimensions }) {
               paint: {
                 "fill-outline-color": "white",
                 "fill-color": "#E14C48",
-                "fill-opacity": 0.7,
+                "fill-opacity": 0.15,
+              },
+            }}
+          />
+           <Layer
+            {...{
+              id: "def456",
+              type: "line",
+              paint: {
+                'line-color': '#000',
+                'line-width': 3
               },
             }}
           />
