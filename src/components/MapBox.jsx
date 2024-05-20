@@ -12,40 +12,28 @@ const initialViewState = {
   pitch: 0,
 };
 
-function MapBox({ coordinates, dimensions }) {
-  // State to manage the view state of the map
+function MapBox({ coordinates }) {
   const [viewState, setViewState] = useState(initialViewState);
 
-  // State to track if the map needs to fit the bounds
-  const [fitBounded, setFitBounded] = useState(false);
-
   useEffect(() => {
-    // When the coordinates and dimensions change, update the map bounds
-    if (!fitBounded && coordinates?.length > 0 && dimensions.width) {
-      setFitBounded(true);
-      const bounds = getMapBounds(
-        coordinates[0],
-        dimensions.width,
-        dimensions.height,
-      );
+    if (coordinates?.length > 0) {
+      const bounds = getMapBounds(coordinates[0]);
       setViewState((prevState) => ({
         ...prevState,
         ...bounds,
       }));
-      setFitBounded(false);
     }
-  }, [fitBounded, dimensions, coordinates]);
+  }, [coordinates]);
 
   return (
     <MapGL
       {...viewState}
       mapStyle="mapbox://styles/mapbox/light-v9"
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_KEY}
-      height="100%"
-      width="100%"
+      height="100vh"
+      width="100vw"
       onMove={(evt) => setViewState(evt.viewState)}
     >
-      {/* Display the polygon layer if coordinates are available */}
       {coordinates?.length > 0 && (
         <Source
           type="geojson"
@@ -55,12 +43,11 @@ function MapBox({ coordinates, dimensions }) {
               type: "Polygon",
               coordinates: coordinates,
             },
-            id: "abc123",
           }}
         >
           <Layer
             {...{
-              id: "abc123",
+              id: "layer-fill",
               type: "fill",
               paint: {
                 "fill-outline-color": "white",
@@ -71,7 +58,7 @@ function MapBox({ coordinates, dimensions }) {
           />
           <Layer
             {...{
-              id: "def456",
+              id: "layer-line",
               type: "line",
               paint: {
                 "line-color": "#000",
