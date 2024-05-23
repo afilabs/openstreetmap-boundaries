@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# openstreetmap-boundaries
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![How to draw and view boundary data with OpenStreetMap OSM](https://blog.afi.io/content/images/size/w1600/2024/05/osm_nominatim_boundary_data_viewer.png "How to draw and view boundary data with OpenStreetMap OSM")
 
-## Available Scripts
+Taken from: 
+- [OpenStreetMap OSM Nominatim API tutorial (part 1 of 4)](https://afi.io/blog/openstreetmap-osm-nominatim-api-tutorial/)
+- [Run a free geocoder with Nominatim Docker (part 2 of 4)](https://www.afi.io/blog/run-a-free-geocoder-with-nominatim-docke)
+- [Building a free geocoding and reverse geocoding service with OpenStreetMap (part 3 of 4)](https://www.afi.io/blog/building-a-free-geocoding-and-reverse-geocoding-service-with-openstreetmap)
+- [How to draw and view boundary data with OpenStreetMap OSM (part 4 of 4)](https://www.afi.io/blog/how-to-draw-and-view-boundary-data-with-openstreetmap-osm)
 
-In the project directory, you can run:
+ How to run the app:
+ 1. cd into your project
+ 2. Open terminal and run 'npm install' (this will install the required dependencies)
+ 3. Add your Mapbox API key to the .env file
+ 4. Run `npm start`
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please contact afian@afi.io if you have any questions or suggestions. Pull requests are welcome.
