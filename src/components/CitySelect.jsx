@@ -15,6 +15,7 @@ const CitySelect = ({ setCoordinates }) => {
       )?.geojson?.coordinates;
       setCoordinates(newCoordinates || []);
     }
+    // console.log("new coords:" + newCoordinates);
   }, [selectedCity]);
 
   const debounceFetchListCity = debounce(async (searchValue) => {
@@ -29,6 +30,7 @@ const CitySelect = ({ setCoordinates }) => {
         );
         const body = await response.json();
         if (Array.isArray(body)) {
+          // console.log(body);
           setListCity(body);
           const options = body
             .filter((result) => result.geojson?.type === "Polygon")
@@ -36,6 +38,7 @@ const CitySelect = ({ setCoordinates }) => {
               label: result.display_name,
               value: result.place_id,
             }));
+          // console.log(options);
           setOptions(options);
         }
       } catch (error) {
