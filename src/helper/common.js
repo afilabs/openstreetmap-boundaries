@@ -1,17 +1,17 @@
-import { WebMercatorViewport } from "viewport-mercator-project";
+import { WebMercatorViewport } from 'viewport-mercator-project';
 
 // Helper function to calculate the minimum or maximum latitude and longitude from a list of coordinates
 const calculateMinMaxCoordinates = (coordinates, minOrMax) => {
-  let minLatOrMaxLat = minOrMax === "max" ? -Infinity : Infinity;
-  let minLngOrMaxLng = minOrMax === "max" ? -Infinity : Infinity;
+  let minLatOrMaxLat = minOrMax === 'max' ? -Infinity : Infinity;
+  let minLngOrMaxLng = minOrMax === 'max' ? -Infinity : Infinity;
 
   for (const [lng, lat] of coordinates) {
     minLatOrMaxLat =
-      minOrMax === "max"
+      minOrMax === 'max'
         ? Math.max(minLatOrMaxLat, lat)
         : Math.min(minLatOrMaxLat, lat);
     minLngOrMaxLng =
-      minOrMax === "max"
+      minOrMax === 'max'
         ? Math.max(minLngOrMaxLng, lng)
         : Math.min(minLngOrMaxLng, lng);
   }
@@ -21,8 +21,8 @@ const calculateMinMaxCoordinates = (coordinates, minOrMax) => {
 
 // Helper function to calculate the bounding box of a list of coordinates
 const calculateBounds = (coordinates) => {
-  const [maxLat, maxLng] = calculateMinMaxCoordinates(coordinates, "max");
-  const [minLat, minLng] = calculateMinMaxCoordinates(coordinates, "min");
+  const [maxLat, maxLng] = calculateMinMaxCoordinates(coordinates, 'max');
+  const [minLat, minLng] = calculateMinMaxCoordinates(coordinates, 'min');
 
   return [
     [Number(minLng), Number(minLat)],

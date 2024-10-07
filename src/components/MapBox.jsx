@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import MapGL, { Layer, Source } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import { getMapBounds } from "../helper/common";
+import React, { useEffect, useState } from 'react';
+import MapGL, { Layer, Source } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { getMapBounds } from '../helper/common';
 
 // Initial view state for the map
 const initialViewState = {
@@ -38,31 +38,31 @@ function MapBox({ coordinates }) {
         <Source
           type="geojson"
           data={{
-            type: "Feature",
+            type: 'Feature',
             geometry: {
-              type: "Polygon",
+              type: 'Polygon',
               coordinates: coordinates,
             },
           }}
         >
           <Layer
             {...{
-              id: "layer-fill",
-              type: "fill",
+              id: 'layer-fill',
+              type: 'fill',
               paint: {
-                "fill-outline-color": "white",
-                "fill-color": "#E14C48",
-                "fill-opacity": 0.15,
+                'fill-outline-color': 'white',
+                'fill-color': '#E14C48',
+                'fill-opacity': 0.15,
               },
             }}
           />
           <Layer
             {...{
-              id: "layer-line",
-              type: "line",
+              id: 'layer-line',
+              type: 'line',
               paint: {
-                "line-color": "#000",
-                "line-width": 3,
+                'line-color': '#000',
+                'line-width': 3,
               },
             }}
           />
